@@ -1,32 +1,88 @@
-markdown: kramdown
-highlighter: rouge
-permalink: /posts/:title.html
-excerpt_separator: "<!-- more -->"
+#######################
+# Theme Customization #
+#######################
 
-baseurl: '/McTigerLily'
-github: jinyi
-author: "jinyi"
-email: winfirm#163.com
-name: "斜月三星洞"
-url: http://www.jinyi.com
-domain: www.jinyi.com
-all_categories: [
-["android", "Android开发","/posts/android.html"], 
-["program", "软件编程","/posts/program.html"],
-["web", "Web建站","/posts/web.html"], 
-["linux", "Linux相关","/posts/linux.html"],
-["read", "读书笔记","/posts/read.html"], 
-["other", "杂记","/posts/other.html"],
-["about", "关于","/about.html"]
-]
+title: J. Bravo                             # used in <title> tag & site header
+author: Johnny Bravo                        # used in a <meta> tag & /feed.xml
+description: >                              # used in a <meta> tag & /feed.xml
+  Hello 911 emergency, there's a handsome guy in my house!
+  Oh wait a second, cancel that. It's only me.
+slogan: Showtime!                           # used in site header, beside title
+avatar: /i/avatar.png                       # used as portrait in site header
+banner: /i/mountains.svg                    # used as background in site header
+url: http://solana.ryanlue.com              # used by plugins to generate feed.xml and sitemap.xml
+baseurl: '/McTigerLily'                                 # prepended to all absolute filepaths
+repo: https://github.com/rlue/jekyll-solana # used in footer
 
-paginate: 8
-paginate_path: "posts/page:num"
-timezone: America/Los_Angeles
+# Objects listed here will appear in the main nav menu.
+# Exceeding four items may cause problems on the desktop (>900px wide) layout.
+nav_menu:
+  - name: Posts
+    url: /
+    icon: /i/icons.svg#posts # icons should be 24x24 px.
+  - name: Projects
+    url: /projects
+    icon: /i/icons.svg#portfolio
+  - name: GitHub
+    url: https://github.com/rlue/
+    icon: /i/icons.svg#github
+    outbound: true      # this key sets a link to open in a new window.
+  - name: Contact
+    scheme: mailto      # these keys enable email obfuscation.
+    handle: hello       # you know, to protect you from bots. (handle and domain
+    domain: github.com  # are separated in case bots crawl GitHub repos, too.)
+    icon: /i/icons.svg#email
+
+# Objects listed here will appear on the /projects.html page.
+projects:
+  - title: Solana
+    teaser: A responsive blog template written in Sass and vanilla JavaScript.
+    url: https://github.com/rlue/jekyll-solana
+    role: Creator
+    category: Frontend Dev
+  - title: Cortana
+    teaser: A talking robot. Now available on Google Play?
+    url: https://play.google.com/store/apps/details?id=com.microsoft.cortana
+    role: Core Team
+    category: NLP
+  - title: Rihanna
+    teaser: Possibly another robot. Also available on Google Play.
+    url: https://play.google.com/store/music/artist/Rihanna?id=Arcw2m2ih45qntv3fufub25tyhu
+    role: Contributor
+    category: Algorithmic Composition
+
+#################
+# Site Settings #
+#################
+
+incremental: true
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - TODO.md
+
+permalink: /:collection/:path
 
 collections:
-  docs:
-    output: true
+  category: { output: true }
+  tag:      { output: true }
 
-gems:
- - jekyll-paginate
+defaults:
+  - scope:  { type:   posts    }
+    values: { layout: post     }
+  - scope:  { type:   tag      }
+    values: { layout: listing  }
+  - scope:  { type:   category }
+    values: { layout: listing  }
+
+sass:
+  sass_dir: _assets/css
+
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+
+paginate: 10
