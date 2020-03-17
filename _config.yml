@@ -3,6 +3,7 @@ highlighter: pygments
 permalink: /posts/:title.html
 excerpt_separator: "<!-- more -->"
 
+baseurl:'McTigerLily'
 github: jinyi
 author: "jinyi"
 email: winfirm#163.com
